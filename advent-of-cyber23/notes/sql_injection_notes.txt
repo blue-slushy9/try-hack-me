@@ -1,0 +1,96 @@
+-Understand and identify SQL injection vulnerabilities
+
+-Exploit stacked queries to turn SQL injection into remote code execution
+
+
+
+# SQL
+Essential for working with relational databases and building dynamic websites.
+Used for checking bank account balance, browsing products on e-commerce sites,
+posting on social media---all of these activities indirectly query and alter
+databases. 
+
+Relational databases are structured data collections organized into tables,
+each consisting of various rows and columns. Within these collections, tables
+are interconnected with predefined relationships, facilitating efficient data
+organization retrieval. For example, an e-commerce relational database might
+include tables for "customers", "orders", and "products" with relationships
+defined to link customer information to their respective orders through the
+use of identifiers.
+
+SQL provides a rigid way to query, insert, update, and delete the data stored
+in these tables, allowing you to retrieve and alter databases as needed. A
+website or application that relies on a database must dynamically generate SQL
+queries and send them to the database engine to fetch or update the necessary
+data. The syntax of SQL queries is based on English and consists of structured
+commands using keywords like SELECT, FROM, WHERE, and JOIN to express
+operations in a natural, language-like way. 
+
+
+# EXAMPLE SQL COMMANDS
+
+# Return all columns for the ornaments for which the material is wood
+SELECT * FROM tbl_ornaments WHERE material = 'Wood';
+
+# Return all the ornaments created by the elf with the ID 102; however it only
+# returns the ornament's ID, color, and category
+SELECT ornament_id, color, category FROM tbl_ornaments WHERE eld_id = 102;
+
+# Adds a new ornament to the table created by the elf with the ID 105 and the
+# specified values for each column
+INSERT INTO tbl_ornaments (ornament_id, elf_id, color, category, material,
+date_created, price) VALUES (5, 105, 'Blue', 'Star', 'Glass', '2023-12-10',
+4.99);
+
+
+
+# PHP
+General-purpose scripting language that plays a crucial role in web
+development. Enables developers to create dynamic and interactive websites by
+generating HTML content on the server and delivering it to the client's web
+browser. PHP's versatility and seamless integration with SQL databses makes it
+a powerful tool for building feature-rich, dynamic web applications. 
+
+PHP is a server-side scripting language, meaning the code is executed on the
+webserver before the final HTML is sent to the user's browser. Unlike client-
+side technologies like HTML, CSS, and JavaScript; PHP allows developers to
+perform various server-side tasks, such as connecting to a wide range of
+databases (e.g. MySQL, PostgreSQL, and Microsoft SQL Server); executing SQL
+queries, processing form data, and dynamically generating web content.
+
+The most common way for PHP to connect to SQL databases is using the PHP Data
+Objects (PDO) extension or specific database server drivers like mysqli for
+MySQL or sqlsrv for Microsoft SQL Server (MSSQL). The connection is typically
+established by providing parameters such as the host, username, password, and
+database name. 
+
+After establishing a database connection, we can execute SQL queries through
+PHP and dynamically generate HTML content based on the returned data to
+display information such as user profiles, product listings, or blog articles.
+
+# PHP EXAMPLE COMMANDS
+
+# Fetch information about any green-colored ornaments
+
+// Execute an SQL query
+
+// Save our SQL query to the variable, $query
+$query = "SELECT * FROM tbl_ornaments WHERE color = 'Green'";
+
+// Assign the function sql_srv_query() to the variable, $result
+$result = sqlsrv_query($conn, $query); // $conn is the database connection
+                                       // object;
+                                       // we can use $result throughout the
+                                       // script to fetch and display data;
+
+-"The real power of database-drive webapps lies in making the queries dynamic.
+In the previous example, we hardcoded the query to fetch green ornaments,
+however real-world applications often require users to interact with the data.
+For example, if we want to allow users to search for ornaments of their
+choice, we need to create dynamic queries that can be adjusted based on user
+input.
+ 
+One common way to take in user-supplied data in webapps is through GET para-
+meters. These parameters are typically appended to the URL 
+
+
